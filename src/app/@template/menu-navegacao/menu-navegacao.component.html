@@ -1,0 +1,36 @@
+<!-- header-section start  -->
+<header class="header">
+  <app-topo></app-topo>
+  <div class="header__bottom">
+    <div class="container">
+      <nav class="navbar navbar-expand-xl p-0 align-items-center">
+        <a class="site-logo site-title" href="/"><img src="/assets/images/logo.png" alt="site-logo"><span class="logo-icon"><i class="flaticon-fire"></i></span></a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navBarContent" aria-controls="navBarContent" aria-expanded="false" aria-label="Navegação">
+        <span class="menu-toggle"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBarContent">
+          <ul class="navbar-nav main-menu ml-auto">
+            <li>
+              <a routerLink="/" (click)="clickMenuItem()">Home</a>
+            </li>
+            <li>
+              <a routerLink="/rifas" (click)="clickMenuItem()">Rifas</a>
+            </li>
+            <li class="menu_has_children">
+              <a href="javascript:void();">Contato</a>
+              <ul class="sub-menu">
+                <li><a href="light-contest.html">Fale Conosco</a></li>
+                <li><a href="light-contest-details-one.html">Políticas de Privicidade</a></li>
+                <li><a href="light-contest-details-two.html">Termos e Condições</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="nav-right">
+            <a href="light-contest.html" class="cmn-btn style--three btn--sm"><img src="/assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Comprar Rifa</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div><!-- header__bottom end -->
+</header>
+<!-- header-section end  -->

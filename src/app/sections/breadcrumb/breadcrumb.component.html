@@ -1,0 +1,18 @@
+<!-- inner-hero-section start -->
+<div class="{{ cssClass }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12"></div>
+      <div class="col-lg-12">
+        <ul class="page-list">
+          <li><a routerLink="/">Home</a></li>
+          <ng-template ngFor let-caminho [ngForOf]="caminhos" let-i="index">
+            <li><a routerLink="{{caminho.link}}">{{caminho.nome}}</a></li>
+          </ng-template>
+          <li class="active">{{destino}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- inner-hero-section end -->

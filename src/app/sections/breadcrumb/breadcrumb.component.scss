@@ -1,0 +1,15 @@
+@media screen and (max-width: 1199px) {
+  .inner-hero-section {
+    padding-top: 150px;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .inner-hero-section {
+    padding-top: 230px;
+  }
+}
+
+.inner-hero-section.pb-300 {
+  padding-bottom: 300px !important;
+}

@@ -1,0 +1,111 @@
+<app-breadcrumb
+  [caminhos]=""
+  [destino]="'Rifas'">
+</app-breadcrumb>
+
+<!-- contest section start  -->
+<section class="pb-120 mt-minus-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="contest-wrapper">
+
+          <div class="contest-wrapper__body">
+
+            <div class="tab-content mt-50" id="myTabContent">
+              <div class="tab-pane fade show active" id="dream" role="tabpanel" aria-labelledby="dream-tab">
+
+                <div class="row mb-none-30 mt-50">
+
+                  <ng-template ngFor let-item [ngForOf]="todasRifas" let-i="index">
+                    <div class="col-xl-4 col-md-6 mb-30">
+                      <div class="contest-card">
+                        <a [routerLink]="['/rifa-detalhe', item.codigo]" class="item-link"></a>
+                        <div class="contest-card__thumb">
+                          <img src="{{ item.imagem }}" alt="image">
+                          <a href="javascript:void()" class="{{ item.status == 'DISPONÍVEL' ? 'action-icon-available' : 'action-icon-closed' }}">
+                            <!-- <div>{{ item.status }}</div> -->
+                          </a>
+                          <div class="contest-num">
+                            <span>Rifa Número:</span>
+                            <h4 class="number">{{ item.codigo }}</h4>
+                          </div>
+                        </div>
+                        <div class="contest-card__content">
+                          <div class="left">
+                            <h5 class="contest-card__name">{{ item.descricao }}</h5>
+                          </div>
+                          <div class="right">
+                            <span class="contest-card__price">R$ {{ item.valor }}</span>
+                            <p>Valor Unitário</p>
+                          </div>
+                        </div>
+                        <div class="contest-card__footer">
+                          <ul class="contest-card__meta">
+                            <li>
+                              <i class="las la-clock"></i>
+                              <span>{{ item.diasTotal }} dias</span>
+                            </li>
+                            <li>
+                              <i class="las la-ticket-alt"></i>
+                              <span>{{ item.rifasRestantes }}</span>
+                              <p>Restante(s)</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div><!-- contest-card end -->
+                    </div>
+                  </ng-template>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- contest-wrapper end -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contest section end -->
+
+<!-- contest feature section start -->
+<section class="pb-120">
+  <div class="container">
+    <div class="row mb-none-30 justify-content-center">
+      <div class="col-lg-4 col-sm-6 mb-30">
+        <div class="icon-item2">
+          <div class="icon-item2__icon">
+            <img src="/assets/images/icon/contest-feature/1.png" alt="image">
+          </div>
+          <div class="icon-item2__content">
+            <h3 class="title">Pagamento Seguro</h3>
+            <p>Realize o pagamentos com os métodos mais seguros do mercado.</p>
+          </div>
+        </div><!-- icon-item2 end -->
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30">
+        <div class="icon-item2">
+          <div class="icon-item2__icon">
+            <img src="/assets/images/icon/contest-feature/2.png" alt="image">
+          </div>
+          <div class="icon-item2__content">
+            <h3 class="title">Valor Acessível</h3>
+            <p>Você pode adquirir ótimos produtos por preços acessíveis.</p>
+          </div>
+        </div><!-- icon-item2 end -->
+      </div>
+      <div class="col-lg-4 col-sm-6 mb-30">
+        <div class="icon-item2">
+          <div class="icon-item2__icon">
+            <img src="/assets/images/icon/contest-feature/3.png" alt="image">
+          </div>
+          <div class="icon-item2__content">
+            <h3 class="title">Entrega Combinada</h3>
+            <p>Após a confirmação do vencedor, entraremos em contato para combinar a entrega.</p>
+          </div>
+        </div><!-- icon-item2 end -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contest feature section end -->
