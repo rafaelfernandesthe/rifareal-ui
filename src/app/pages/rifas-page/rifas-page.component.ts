@@ -1,3 +1,4 @@
+import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { Rifa } from './../../core/model';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,11 +9,13 @@ declare var $: any;
   templateUrl: './rifas-page.component.html',
   styleUrls: ['./rifas-page.component.scss']
 })
-export class RifasPageComponent implements OnInit {
+export class RifasPageComponent extends PagesBaseComponent implements OnInit {
 
   todasRifas: Rifa[];
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
 

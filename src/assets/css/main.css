@@ -1508,7 +1508,50 @@ a:hover {
 @media (max-width: 767px) {
     .cmn-btn {
         font-size: 14px;
+        padding: 10px 15px;
     }
+}
+
+@media (max-width: 737px) {
+  .cmn-btn {
+      font-size: 12px;
+      padding: 10px 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cmn-btn {
+      font-size: 10px;
+      padding: 10px 7px;
+  }
+}
+
+/* button css start */
+.cmn-btn-pay {
+  padding: 10px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+  background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+  background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+  background-image: -ms-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
+  box-shadow: 0px 17px 40px 0px rgba(124, 78, 25, 0.35);
+  -webkit-transition: background-size 0.3s;
+  -o-transition: background-size 0.3s;
+  transition: background-size 0.3s;
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .cmn-btn-pay {
+      font-size: 14px;
+      padding: 8px 8px;
+  }
 }
 
 .cmn-btn:hover {
@@ -6383,6 +6426,17 @@ span.is-active:after {
   flex-wrap: wrap;
 }
 
+@media (max-width: 761px) {
+  .contest-cart-numbers {
+    background-color: #12023e;
+    padding: 10px 10px 15px 10px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
 .contest-cart__left {
     width: 50%;
     padding-right: 15px;
@@ -6396,7 +6450,6 @@ span.is-active:after {
 }
 
 .contest-cart__thumb-slider {
-    height: 500px;
     background-color: #5a4bcc;
     display: flex;
     flex-wrap: wrap;
@@ -6496,7 +6549,6 @@ span.is-active:after {
     .contest-cart__right {
         width: 100%;
         padding-left: 0;
-        margin-top: 50px;
     }
 }
 
@@ -6507,7 +6559,6 @@ span.is-active:after {
 
 .contest-cart__right .contest-name {
     font-size: 36px;
-    margin-bottom: 45px;
 }
 
 .contest-cart__right .contest-num {
@@ -6568,6 +6619,40 @@ span.is-active:after {
     -moz-border-radius: 999px;
     -ms-border-radius: 999px;
     -o-border-radius: 999px;
+}
+
+.progressbar-timer {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 20px;
+  background-color: #200e54;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+}
+
+.progressbar-timer .bar {
+  opacity: 50%;
+  position: absolute;
+  width: 1%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #ec6624;
+  overflow: hidden;
+  border-radius: 999px;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  -ms-border-radius: 999px;
+  -o-border-radius: 999px;
+}
+
+.progressbar-timer .bar-progress-value {
+  text-align: center;
+  color: white;
 }
 
 .contest-cart__right .ticket-price {
@@ -7418,6 +7503,40 @@ span.is-active:after {
     margin: 4px 3px;
 }
 
+.color-legend {
+  padding-bottom: 4px;
+}
+
+.lottery-single__number-legend {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: -3px;
+  justify-content: center;
+}
+
+.lottery-single__number-legend li {
+  font-size: 10px;
+  width: 80px;
+  height: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10%;
+  -webkit-border-radius: 10%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 0px 2px;
+}
+
 .lottery-single__number li.active {
     background-image: -moz-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
     background-image: -webkit-linear-gradient(86deg, #ec038b 0%, #fb6468 44%, #fbb936 100%);
@@ -7426,7 +7545,7 @@ span.is-active:after {
     border: none;
 }
 
-.lottery-single__number li.purchased {
+.lottery-single__number li.purchased, .lottery-single__number-legend li.purchased {
   background-image: -moz-linear-gradient(86deg, #f0d2e3 0%, #e2caca 44%, #a3a3a3 100%);
   background-image: -webkit-linear-gradient(86deg, #f0d2e3 0%, #e2caca 44%, #a3a3a3 100%);
   background-image: -ms-linear-gradient(86deg, #f0d2e3 0%, #e2caca 44%, #a3a3a3 100%);
@@ -7436,7 +7555,7 @@ span.is-active:after {
   pointer-events: none;
 }
 
-.lottery-single__number li.reserved {
+.lottery-single__number li.reserved, .lottery-single__number-legend li.reserved  {
   background-image: -moz-linear-gradient(86deg, #d5ec6f 0%, #e0de52 44%, #dfdb02 100%);
   background-image: -webkit-linear-gradient(86deg, #d5ec6f 0%, #e0de52 44%, #dfdb02 100%);
   background-image: -ms-linear-gradient(86deg, #d5ec6f 0%, #e0de52 44%, #dfdb02 100%);
@@ -7464,10 +7583,9 @@ span.is-active:after {
 }
 
 .lottery-single__footer {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 20px 0 30px 0;
-    border-top: 1px solid #7d73cd;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px 0 0px 0;
 }
 
 .lottery-single.style--two .lottery-single__number {
@@ -10868,6 +10986,10 @@ span.is-active:after {
 
 .social-links li {
     margin: 5px;
+}
+
+.social-links-top .slink {
+  margin: 5px;
 }
 
 .social-links li a {

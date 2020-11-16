@@ -14,8 +14,12 @@ export class MenuNavegacaoComponent implements OnInit {
   ngOnInit() {
   }
 
-  clickMenuItem() {
+  clickMenuItem(scrollTop: boolean) {
     $('#navBarContent').collapse('hide');
+    if ( scrollTop ) {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   }
 
 }

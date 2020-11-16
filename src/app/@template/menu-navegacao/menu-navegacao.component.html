@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navBarContent">
           <ul class="navbar-nav main-menu ml-auto">
             <li>
-              <a routerLink="/" (click)="clickMenuItem()">Home</a>
+              <a routerLink="/" (click)="clickMenuItem(true)">Home</a>
             </li>
             <li>
-              <a routerLink="/rifas" (click)="clickMenuItem()">Rifas</a>
+              <a routerLink="/rifas" (click)="clickMenuItem(true)">Rifas</a>
             </li>
             <li class="menu_has_children">
               <a href="javascript:void();">Contato</a>
@@ -25,9 +25,6 @@
               </ul>
             </li>
           </ul>
-          <div class="nav-right">
-            <a href="light-contest.html" class="cmn-btn style--three btn--sm"><img src="/assets/images/icon/btn/tag.png" alt="icon" class="mr-2">Comprar Rifa</a>
-          </div>
         </div>
       </nav>
     </div>

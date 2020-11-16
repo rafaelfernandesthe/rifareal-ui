@@ -24,3 +24,14 @@ export enum StatusNumeroRifa {
   RESERVADO = 2,
   COMPRADO = 3,
 }
+
+export class OrdemDeCompra {
+  nome: string;
+  cpf: string;
+  telefone: string;
+  email: string;
+  termos: boolean;
+  idRifa: number;
+  numeros: NumeroRifa[];
+  valorTotal: number;
+}

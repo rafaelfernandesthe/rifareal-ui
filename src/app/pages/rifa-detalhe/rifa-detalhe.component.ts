@@ -1,7 +1,9 @@
+import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { RifaService } from './../../services/rifa.service';
-import { NumeroRifa, Rifa, StatusNumeroRifa } from './../../core/model';
+import { NumeroRifa, Rifa, StatusNumeroRifa, OrdemDeCompra } from './../../core/model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 declare var $: any;
 
@@ -10,18 +12,25 @@ declare var $: any;
   templateUrl: './rifa-detalhe.component.html',
   styleUrls: ['./rifa-detalhe.component.scss']
 })
-export class RifaDetalheComponent implements OnInit, OnDestroy {
+export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, OnDestroy {
 
   codigo: string;
   public rifa: Rifa;
   private sub: any;
   public todosNumeros: any = new Array();
   public numerosSelecionados: any = new Array();
+  public percentual: string;
+  public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {
+    super();
+  }
 
   ngOnInit() {
+    super.ngOnInit();
+    this.ordemDeCompra = new OrdemDeCompra();
     this.todosNumeros = new Array();
+    this.numerosSelecionados = new Array();
     this.sub = this.route.params.subscribe(params => {
       this.codigo = params.codigo;
 
@@ -37,7 +46,7 @@ export class RifaDetalheComponent implements OnInit, OnDestroy {
         diasTotal: 7,
         diasRestantes: 7,
         rifasTotal: 200,
-        rifasRestantes: 190,
+        rifasRestantes: 50,
         dataFim: '2020/11/10',
         imagem: '/assets/images/premios/iphone11-red-select-2019.png'
       } as Rifa;
@@ -50,14 +59,9 @@ export class RifaDetalheComponent implements OnInit, OnDestroy {
           + '<div><span>%S</span><p>Segundos</p></div>'));
       });
 
-      const percentual = (100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal)) + '%';
-      $('.progressbar').each(function() {
-        $(this).find('.bar').animate({
-          width: percentual
-        }, 3000);
-      });
+      this.percentual = (100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal)) + '%';
 
-      for ( let i = 0; i < this.rifa.rifasTotal; ) {
+      for ( let i = 0; i < this.rifa.rifasTotal; i++) {
         let s = StatusNumeroRifa.DISPONIVEL;
 
         if ( i % 17 === 0) {
@@ -69,14 +73,21 @@ export class RifaDetalheComponent implements OnInit, OnDestroy {
         }
 
         const obj = {
-          valor: ++i,
+          valor: i,
           status: s,
         } as NumeroRifa;
 
         this.todosNumeros.push(obj);
       }
+    });
 
-   });
+    $(window).on('scroll', () => {
+      if ($('#cart')[0].hidden === false) {
+        $('#scroll-to-top-icon').removeClass('scroll-to-top');
+      } else {
+        $('#scroll-to-top-icon').addClass('scroll-to-top');
+      }
+    });
 
   }
 
@@ -99,10 +110,10 @@ export class RifaDetalheComponent implements OnInit, OnDestroy {
       return;
     }
 
-    $('.lottery-single__body .lottery-single__number li:nth-child(' + this.getValorStr(numero.valor) + ')').removeClass('selected');
+    $('.lottery-single__body .lottery-single__number li:nth-child(' + (numero.valor + 1) + ')').removeClass('selected active');
     if ( this.numerosSelecionados.indexOf(numero) === -1 ) {
       this.numerosSelecionados.push(numero);
-      $('.lottery-single__body .lottery-single__number li:nth-child(' + this.getValorStr(numero.valor) + ')').addClass('selected');
+      $('.lottery-single__body .lottery-single__number li:nth-child(' + (numero.valor + 1) + ')').addClass('selected');
     } else {
       this.numerosSelecionados = this.numerosSelecionados.filter(n => n !== numero);
     }
@@ -110,6 +121,58 @@ export class RifaDetalheComponent implements OnInit, OnDestroy {
     this.numerosSelecionados = this.numerosSelecionados.sort((n1, n2) => {
       return n1.valor - n2.valor;
     });
+
+    this.onShowHideCart();
+  }
+
+  onShowHideCart() {
+    if (this.numerosSelecionados.length > 0) {
+      $('#cart').slideDown('fast');
+    } else {
+      $('#cart').slideUp('fast');
+    }
+  }
+
+  comprarRifa() {
+    if (this.numerosSelecionados.length === 0) {
+      return;
+    }
+
+    $('#purchaseModal').modal('show');
+
+  }
+
+  getNumerosSelecionadosView() {
+    return this.numerosSelecionados.map(n => this.getValorStr(n.valor)).join();
+  }
+
+  onSubmit() {
+    this.ordemDeCompra.numeros = this.numerosSelecionados;
+    this.ordemDeCompra.valorTotal = this.rifa.valor * this.ordemDeCompra.numeros.length;
+
+    // SAVE DATABASE ACTION!!
+    // TODO
+
+    // EMAIL TO ADMIN ACTION!!
+    // TODO
+
+    // WHATSAPP CLIENT ACTION!!
+    window.open(
+      'https://api.whatsapp.com/send?lang=pt_br&phone=+5511945477715&text='
+      + 'Rifa: ' + this.rifa.descricao
+      + '%0ANúmero(s) Comprado(s): ' + this.ordemDeCompra.numeros.map(n => this.getValorStr(n.valor)).join()
+      + '%0AValor Total: R$ ' + this.ordemDeCompra.valorTotal + ',00'
+      + '%0ANome: ' + this.ordemDeCompra.nome
+      + '%0ACPF: ' + this.ordemDeCompra.cpf
+      + '%0ATelefone: ' + this.ordemDeCompra.telefone,
+      '_blank'
+    );
+
+    $('#purchaseModal').modal('hide');
+    $('#purchaseModalConfirm').modal('show');
+    this.ngOnInit();
+    this.onShowHideCart();
+
   }
 
   ngOnDestroy() {
