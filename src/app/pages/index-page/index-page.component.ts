@@ -10,6 +10,8 @@ declare var $: any;
 })
 export class IndexPageComponent extends PagesBaseComponent implements OnInit {
 
+  sorteioPrincipal: any;
+
   constructor() {
     super();
    }
@@ -20,6 +22,18 @@ export class IndexPageComponent extends PagesBaseComponent implements OnInit {
       const bg = ('url(' + $(this).data('background') + ')');
       return bg;
     });
+
+    this.sorteioPrincipal = {
+      subtitulo_linha1: 'Iphone 11 64gb Red POR',
+      destaque_linha2: 'R$ 25',
+      texto_linha3: `Esta é sua grande oportunidade de adquirir um Iphone 11 64gb Red,
+        o sorteio acontecerá no dia 15/12/2020 pela Loteria Federal da Caixa.`,
+      textoBotao: 'Comprar Agora!',
+      urlBotao: 'rifa-detalhe/CIP003',
+      urlVideo: '',
+      imagem: '/assets/images/premios/iphone11-red-select-2019.png',
+      altImagem: 'Iphone 11',
+    };
   }
 
 }
