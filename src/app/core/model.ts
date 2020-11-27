@@ -8,15 +8,19 @@ export class Rifa {
   diasRestantes: number;
   rifasTotal: number;
   rifasRestantes: number;
-  dataFim: string;
+  dataInclusao: Date;
+  dataInicio: Date;
+  dataFim: Date;
   imagem: string;
   numeros: Array<NumeroRifa>;
 }
 
 export class NumeroRifa {
+  id: number;
   idRifa: number;
   valor: number;
-  status: number;
+  status: string;
+  statusNum: number;
 }
 
 export enum StatusNumeroRifa {

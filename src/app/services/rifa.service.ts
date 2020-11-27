@@ -3,29 +3,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RifaService {
 
   rifasUrl: string;
 
   constructor(private http: HttpClient) {
-    this.rifasUrl = `${environment.apiUrl}/rifas`;
+    this.rifasUrl = `${environment.apiUrl}/site/rifa`;
   }
 
-  load(codigo: string): Promise<any> {
-    return this.http.get(`${this.rifasUrl}/load/${codigo}`)
+  save(id: string): Promise<any> {
+    return this.http.get(`${this.rifasUrl}/byId/${id}`)
+      .toPromise();
+  }
+
+  loadById(id: string): Promise<any> {
+    return this.http.get(`${this.rifasUrl}/byId/${id}`)
+      .toPromise();
+  }
+
+  loadByCodigo(codigo: string): Promise<any> {
+    return this.http.get(`${this.rifasUrl}/byCode/${codigo}`)
       .toPromise();
   }
 
   listar3Ultimas(): Promise<any> {
-    return this.http.get(`${this.rifasUrl}/ultimas`)
+    return this.http.get(`${this.rifasUrl}/list3`)
       .toPromise();
   }
 
   listarTodas(): Promise<any> {
-    return this.http.get(this.rifasUrl)
+    return this.http.get(`${this.rifasUrl}/list`)
       .toPromise();
   }
 }

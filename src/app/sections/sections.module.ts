@@ -1,3 +1,4 @@
+import { ServicesModule } from './../services/services.module';
 import { BreadcrumbComponent } from './../sections/breadcrumb/breadcrumb.component';
 import { VantagensComponent } from './vantagens/vantagens.component';
 import { UltimosGanhadoresComponent } from './ultimos-ganhadores/ultimos-ganhadores.component';
@@ -15,7 +16,7 @@ import { RouterModule } from '@angular/router';
     ComoParticiparComponent, SuporteComponent, UltimasRifasComponent, UltimosGanhadoresComponent, VantagensComponent, BreadcrumbComponent
   ],
   imports: [
-    CommonModule, RouterModule
+    CommonModule, RouterModule, ServicesModule
   ],
   exports: [
     ComoParticiparComponent, SuporteComponent, UltimasRifasComponent, UltimosGanhadoresComponent, VantagensComponent, BreadcrumbComponent

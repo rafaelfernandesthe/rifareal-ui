@@ -11,7 +11,7 @@
       <div class="col-lg-6">
         <div class="clock-wrapper">
           <p class="mb-2">Esta Rifa finaliza em:</p>
-          <div class="clock" data-clock="">{{rifa.dataFim}}</div>
+          <div class="clock" data-clock="">{{dataFimStr}}</div>
         </div><!-- clock-wrapper end -->
       </div>
     </div>
@@ -74,7 +74,7 @@
                       </div>
                       <ul class="lottery-single__number">
                         <ng-template ngFor let-numero [ngForOf]="todosNumeros" let-i="index">
-                          <li class="{{getClassByStatus(numero.status)}}" (click)="onAdd($event, numero)">{{getValorStr(numero.valor)}}</li>
+                          <li class="{{getClassByStatus(numero.statusNum)}}" (click)="onAdd($event, numero)">{{getValorStr(numero.valor)}}</li>
                         </ng-template>
                       </ul>
                     </div><!-- lottery-single__body end -->

@@ -1,3 +1,4 @@
+import { ServicesModule } from './services/services.module';
 import { TemplateModule } from './@template/template.module';
 import { PagesModule } from './pages/pages.module';
 import { SectionsModule } from './sections/sections.module';
@@ -18,6 +19,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     PagesModule,
     SectionsModule,
     TemplateModule,
+    ServicesModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}

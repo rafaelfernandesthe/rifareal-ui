@@ -15,14 +15,15 @@ declare var $: any;
 export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, OnDestroy {
 
   codigo: string;
-  public rifa: Rifa;
+  public rifa: Rifa = new Rifa();
   private sub: any;
   public todosNumeros: any = new Array();
   public numerosSelecionados: any = new Array();
   public percentual: string;
   public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
+  public dataFimStr: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private rifaService: RifaService) {
     super();
   }
 
@@ -34,59 +35,33 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
     this.sub = this.route.params.subscribe(params => {
       this.codigo = params.codigo;
 
-      // this.rifaService.load(this.codigo).then( result => {
-      //   this.rifa = result;
-      // });
+      this.rifaService.loadByCodigo(this.codigo).then( result => {
+        this.rifa = result;
 
-      this.rifa = {
-        status: 'DISPONÍVEL',
-        codigo: 'CIP003',
-        descricao: 'Iphone 11 64gb Red',
-        valor: 25,
-        diasTotal: 7,
-        diasRestantes: 7,
-        rifasTotal: 200,
-        rifasRestantes: 50,
-        dataFim: '2020/11/10',
-        imagem: '/assets/images/premios/iphone11-red-select-2019.png'
-      } as Rifa;
+        this.rifa.dataFim = new Date(this.rifa.dataFim);
+        this.dataFimStr = `${this.rifa.dataFim.getFullYear()}/${this.rifa.dataFim.getMonth() + 1}/${this.rifa.dataFim.getDay()}`;
+        $('.clock').countdown(this.dataFimStr, function(event) {
+          $(this).html(event.strftime(''
+            + '<div><span>%D</span><p>Dias</p></div>'
+            + '<div><span>%H</span><p>Horas</p></div>'
+            + '<div><span>%M</span><p>Minutos</p></div>'
+            + '<div><span>%S</span><p>Segundos</p></div>'));
+        });
 
-      $('.clock').countdown(this.rifa.dataFim, function(event) {
-        $(this).html(event.strftime(''
-          + '<div><span>%D</span><p>Dias</p></div>'
-          + '<div><span>%H</span><p>Horas</p></div>'
-          + '<div><span>%M</span><p>Minutos</p></div>'
-          + '<div><span>%S</span><p>Segundos</p></div>'));
+        this.percentual = (100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal)) + '%';
+
+        this.todosNumeros = this.todosNumeros.concat(this.rifa.numeros);
+
       });
 
-      this.percentual = (100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal)) + '%';
-
-      for ( let i = 0; i < this.rifa.rifasTotal; i++) {
-        let s = StatusNumeroRifa.DISPONIVEL;
-
-        if ( i % 17 === 0) {
-          s = StatusNumeroRifa.COMPRADO;
+      $(window).on('scroll', () => {
+        if ($('#cart')[0].hidden === false) {
+          $('#scroll-to-top-icon').removeClass('scroll-to-top');
+        } else {
+          $('#scroll-to-top-icon').addClass('scroll-to-top');
         }
+      });
 
-        if ( i % 33 === 0) {
-          s = StatusNumeroRifa.RESERVADO;
-        }
-
-        const obj = {
-          valor: i,
-          status: s,
-        } as NumeroRifa;
-
-        this.todosNumeros.push(obj);
-      }
-    });
-
-    $(window).on('scroll', () => {
-      if ($('#cart')[0].hidden === false) {
-        $('#scroll-to-top-icon').removeClass('scroll-to-top');
-      } else {
-        $('#scroll-to-top-icon').addClass('scroll-to-top');
-      }
     });
 
   }
@@ -105,7 +80,7 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   }
 
   onAdd(event, numero: NumeroRifa) {
-    if (numero.status !== 1) {
+    if (numero.statusNum !== 1) {
       this.ngOnInit();
       return;
     }

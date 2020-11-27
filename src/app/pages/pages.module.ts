@@ -1,3 +1,4 @@
+import { ServicesModule } from './../services/services.module';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './../core/core.module';
 import { SectionsModule } from './../sections/sections.module';
@@ -14,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [IndexPageComponent, RifasPageComponent, RifaDetalheComponent, PagesBaseComponent],
   imports: [
-    CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule
+    CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule
   ]
 })
 export class PagesModule { }

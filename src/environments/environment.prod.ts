@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'rifa-pub-api',
+  apiUrl: 'https://site-api.rifareal.com.br/prod/v1',
 };
