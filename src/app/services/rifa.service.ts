@@ -17,6 +17,12 @@ export class RifaService {
       .toPromise();
   }
 
+
+  loadByMainPage(): Promise<any> {
+    return this.http.get(`${this.rifasUrl}/byMainPage`)
+      .toPromise();
+  }
+
   loadById(id: string): Promise<any> {
     return this.http.get(`${this.rifasUrl}/byId/${id}`)
       .toPromise();

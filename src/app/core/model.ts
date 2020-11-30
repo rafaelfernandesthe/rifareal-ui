@@ -11,6 +11,7 @@ export class Rifa {
   dataInclusao: Date;
   dataInicio: Date;
   dataFim: Date;
+  dataFimStr: string;
   imagem: string;
   numeros: Array<NumeroRifa>;
 }

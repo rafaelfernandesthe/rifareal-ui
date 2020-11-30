@@ -1,3 +1,4 @@
+import { RifaService } from './../../services/rifa.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,9 +11,9 @@ declare var $: any;
 })
 export class IndexPageComponent extends PagesBaseComponent implements OnInit {
 
-  sorteioPrincipal: any;
+  sorteioPrincipal: any = {};
 
-  constructor() {
+  constructor(private rifaService: RifaService) {
     super();
    }
 
@@ -23,17 +24,19 @@ export class IndexPageComponent extends PagesBaseComponent implements OnInit {
       return bg;
     });
 
-    this.sorteioPrincipal = {
-      subtitulo_linha1: 'Iphone 11 64gb Red POR',
-      destaque_linha2: 'R$ 25',
-      texto_linha3: `Esta é sua grande oportunidade de adquirir um Iphone 11 64gb Red,
-        o sorteio acontecerá no dia 15/12/2020 pela Loteria Federal da Caixa.`,
-      textoBotao: 'Comprar Agora!',
-      urlBotao: 'rifa-detalhe/CIP003',
-      urlVideo: '',
-      imagem: '/assets/images/premios/iphone11-red-select-2019.png',
-      altImagem: 'Iphone 11',
-    };
+    this.rifaService.loadByMainPage().then(result => {
+      this.sorteioPrincipal = {
+        subtitulo_linha1: `${result.descricao} POR`,
+        destaque_linha2: `R$ ${result.valor}`,
+        texto_linha3: `Esta é sua grande oportunidade de adquirir um ${result.descricao},
+          o sorteio acontecerá no dia ${result.dataFimStr} pela Loteria Federal da Caixa.`,
+        textoBotao: 'Comprar Agora!',
+        urlBotao: `rifa-detalhe/${result.codigo}`,
+        urlVideo: '',
+        imagem: result.imagem,
+        altImagem: result.descricao,
+      };
+    });
   }
 
 }
