@@ -21,9 +21,7 @@
                     <a [routerLink]="['/rifa-detalhe', item.codigo]" class="item-link"></a>
                     <div class="contest-card__thumb">
                       <img src="{{ item.imagem }}" alt="image">
-                      <a href="javascript:void()" class="{{ item.status == 'ABERTA' ? 'action-icon-available' : 'action-icon-closed' }}">
-                        <!-- <div>{{ item.status }}</div> -->
-                      </a>
+                      <a href="javascript:void()" class="{{ item.status == 'ABERTA' ? 'action-icon-available' : 'action-icon-closed' }}"></a>
                       <div class="contest-num">
                         <span>Rifa Número:</span>
                         <h4 class="number">{{ item.codigo }}</h4>

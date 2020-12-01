@@ -39,7 +39,11 @@
             <div class="ticket-price">
               <span class="amount">R$ {{rifa.valor}}</span>
               <small>Valor Unitário</small>
-              <span class="social-links-top"><a class="slink" href="#0"><i class="fab fa-instagram"></i></a><a class="slink" href="#0"><i class="fab fa-facebook-f"></i></a><a class="slink" href="#0"><i class="fab fa-whatsapp"></i></a></span>
+              <span class="social-links-top">
+                <a class="slink" href="http://instagra.com/rifarealbr" target="_blank">
+                <i class="fab fa-instagram"></i></a>
+                <a class="slink" href="http://wa.me/551130428499?text=Ol%C3%A1%2C+gostaria+de+uma+tirar+uma+d%C3%BAvida" target="_blank">
+                <i class="fab fa-whatsapp"></i></a></span>
             </div>
           </div><!-- contest-cart__right end -->
         </div><!-- contest-cart end -->
@@ -86,71 +90,52 @@
               <div class="content-block">
                 <h3 class="title">Descrição</h3>
                 <p>Rifa de um {{ rifa.descricao }}.</p>
-              </div><!-- content-block end -->
-              <div class="content-block">
-                <h3 class="title">Especificações</h3>
-                <div class="row mb-none-30">
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/1.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>0-62mph</p>
-                        <span>4.0 secs</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/2.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>Top Speed</p>
-                        <span>181 mph</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/3.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>Power</p>
-                        <span>542 bhp</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/4.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>Displacement</p>
-                        <span>4.0ltr</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/5.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>bhp</p>
-                        <span>691</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                  <div class="col-lg-4 col-sm-6 mb-30">
-                    <div class="icon-item">
-                      <div class="icon-item__thumb"><img src="/assets/images/icon/specification/6.png" alt="image"></div>
-                      <div class="icon-item__content">
-                        <p>Year</p>
-                        <span>2019</span>
-                      </div>
-                    </div><!-- icon-item end -->
-                  </div>
-                </div>
+                <p>Produto Novo com as características originais do fabricante.</p>
+                <p>*Imagens Ilustrativas sujeitas a alteração na cor do produto.</p>
               </div><!-- content-block end -->
             </div>
             <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
               <div class="content-block">
-                <h3 class="title">Competition Details</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed ex eget mi sollicitudin consequat. Sed rhoncus ligula vel justo dignissim aliquam. Maecenas non est vitae ipsum luctus feugiat. Fusce purus nunc, sodales at condimentum sed, ullamcorper a nulla. Nam justo est, venenatis quis tellus in, volutpat eleifend nunc. Vestibulum congue laoreet mi non interdum. Ut ut dapibus tellus.</p>
+                <h3 class="title">Regulamento</h3>
+                <br>
+                <p>A cota mínima a para realização do sorteio é de 95% dos bilhetes pagos, caso não seja alcançada, a data do sorteio será alterada para o próximo sorteio da Loteria Federal, até que a cota seja atendida.</p>
+
+                <p>Neste sorteio cada número adquirido/comprado equivale a {{1000/rifa.numeros.length}} números para concorrer.</p>
+                <p>A fómula para os números que irão concorrer é: n, n+200, n+400, n+600, n+800</p>
+                <p>Exemplos: <br>
+                  Caso seja comprado o número 0, este participante concorrerá com os números 0, 200, 400, 600, 800<br>
+                  Caso seja comprado o número 1, este participante concorrerá com os números 1, 201, 401, 601, 801<br>
+                  Caso seja comprado o número 5, este participante concorrerá com os números 5, 205, 405, 605, 805<br>
+                  Caso seja comprado o número 10, este participante concorrerá com os números 10, 210, 410, 610, 810<br>
+                  Caso seja comprado o número 100, este participante concorrerá com os números 100, 300, 500, 700, 900<br>
+                  Caso seja comprado o número 150, este participante concorrerá com os números 150, 350, 550, 750, 950<br>
+                  Caso seja comprado o número 199, este participante concorrerá com os números 199, 399, 599, 799, 999<br>
+                </p>
+                <br>
+                <p>O ganhador do sorteio será definido com base no resultado do 1º prêmio da Loteria Federal de {{rifa.dataFimStr}}.</p>
+
+                <p>A Loteria Federal sorteia um número com 6 digitos, exemplo: 046174, a apuração desta rifa ocorre sempre com base nos 3 últimos números, neste caso 174 seria o vencedor</p>
+
+                <p>Caso o número sorteado pela Loteria Federal não coincida com um bilhete pago, o ganhador será definido com base no 2º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+
+                <p>Caso o número sorteado pela Loteria Federal no 2º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 3º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+
+                <p>Caso o número sorteado pela Loteria Federal no 3º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 4º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+
+                <p>Caso o número sorteado pela Loteria Federal no 4º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 5º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+
+                <p>Persistindo sem ganhador, o contemplado será o número mais próximo do 1º prêmio da Loteria Federal de {{rifa.dataFimStr}}, em caso de números igualmente próximos o vencedor será o número maior.</p>
+                <p>Exemplo: <br>
+                  Número sorteado: 150, porém este número não foi comprado.<br>
+                  Se foram comprados os números 149 e o número 151, o vencedor será o número 151, pois é o maior.
+                </p>
+                <br>
+
+                <p>O RifaReal entregará os prêmios em até 7 dias úteis após a realização do sorteio.</p>
+
+                <p>O Vencedor deverá ler e estar ciente dos termos e condições para o recebimento do bem, sendo obrigatório o registro via foto e vídeo da recepção do prêmio.</p>
+
+                <br>
               </div><!-- content-block end -->
             </div>
           </div><!-- tab-content end -->
@@ -229,23 +214,22 @@
 </div>
 
 <!-- Modal  Confirm -->
-<div class="modal fade" id="purchaseModalConfirm" tabindex="-1" role="dialog" aria-labelledby="purchaseModalConfirmTitle" aria-hidden="true">
+<div class="modal fade" id="purchaseModalConfirm" tabindex="-1" role="dialog" aria-labelledby="purchaseModalConfirmTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content bg-modal-default">
       <div class="modal-header">
         <h5 class="modal-title label" id="purchaseModalConfirmTitle">Parabéns!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <div class="info-title">
           <label>Sua compra foi finalizada!</label><br>
-          <label>Por favor, siga as instruções via whatsapp.</label><br>
+          <label>Seus números do sorteio já estão reservados, agora você precisa fazer um Pix no valor de <b>R$ {{ordemDeCompra.valorTotal}},00</b> para o seguinte e-mail:</label>
+          <label><b>suporte@rifareal.com.br</b></label>
+          <label>Assim que for realizado o Pix, clique no botão abaixo para fazermos a confirmação do pagamento via WhatsApp.</label><br>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-secondary" (click)="onWhatsAppAction()">Confirmar no WhatsApp</button>
       </div>
     </div>
   </div>

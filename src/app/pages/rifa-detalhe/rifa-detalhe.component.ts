@@ -1,3 +1,4 @@
+import { OrdemDeCompraService } from './../../services/ordem-de-compra.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { RifaService } from './../../services/rifa.service';
 import { NumeroRifa, Rifa, StatusNumeroRifa, OrdemDeCompra } from './../../core/model';
@@ -23,7 +24,7 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
   public dataFimStr: string;
 
-  constructor(private route: ActivatedRoute, private rifaService: RifaService) {
+  constructor(private route: ActivatedRoute, private rifaService: RifaService, private ordemDeCompraService: OrdemDeCompraService) {
     super();
   }
 
@@ -39,7 +40,7 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
         this.rifa = result;
 
         this.rifa.dataFim = new Date(this.rifa.dataFim);
-        this.dataFimStr = `${this.rifa.dataFim.getFullYear()}/${this.rifa.dataFim.getMonth() + 1}/${this.rifa.dataFim.getDay()}`;
+        this.dataFimStr = `${this.rifa.dataFim.getFullYear()}/${this.rifa.dataFim.getMonth() + 1}/${this.rifa.dataFim.getDate()}`;
         $('.clock').countdown(this.dataFimStr, function(event) {
           $(this).html(event.strftime(''
             + '<div><span>%D</span><p>Dias</p></div>'
@@ -55,7 +56,7 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
       });
 
       $(window).on('scroll', () => {
-        if ($('#cart')[0].hidden === false) {
+        if ($('#cart')[0] && $('#cart')[0].hidden === false) {
           $('#scroll-to-top-icon').removeClass('scroll-to-top');
         } else {
           $('#scroll-to-top-icon').addClass('scroll-to-top');
@@ -122,20 +123,33 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   }
 
   onSubmit() {
-    this.ordemDeCompra.numeros = this.numerosSelecionados;
-    this.ordemDeCompra.valorTotal = this.rifa.valor * this.ordemDeCompra.numeros.length;
+    this.ordemDeCompra.idRifa = this.rifa.id;
+    this.ordemDeCompra.numerosObj = this.numerosSelecionados;
+    this.ordemDeCompra.idNumeros = this.ordemDeCompra.numerosObj.map(n => n.id);
+    this.ordemDeCompra.valorTotal = this.rifa.valor * this.ordemDeCompra.idNumeros.length;
 
-    // SAVE DATABASE ACTION!!
-    // TODO
+    this.ordemDeCompraService.save(this.ordemDeCompra).then(result => {
+      if (result) {
+        // EMAIL TO ADMIN ACTION!!
+        // TODO
 
-    // EMAIL TO ADMIN ACTION!!
-    // TODO
+        $('#purchaseModal').modal('hide');
+        $('#purchaseModalConfirm').modal('show');
+      } else {
+        alert('Ops...Ocorreu um erro, por favor, tente novamente.');
+      }
+    }).finally(() => {
 
+    });
+
+  }
+
+  onWhatsAppAction() {
     // WHATSAPP CLIENT ACTION!!
     window.open(
-      'https://api.whatsapp.com/send?lang=pt_br&phone=+5511945477715&text='
+      'https://api.whatsapp.com/send?lang=pt_br&phone=+551130428499&text='
       + 'Rifa: ' + this.rifa.descricao
-      + '%0ANúmero(s) Comprado(s): ' + this.ordemDeCompra.numeros.map(n => this.getValorStr(n.valor)).join()
+      + '%0ANúmero(s) Comprado(s): ' + this.ordemDeCompra.numerosObj.map(n => this.getValorStr(n.valor)).join()
       + '%0AValor Total: R$ ' + this.ordemDeCompra.valorTotal + ',00'
       + '%0ANome: ' + this.ordemDeCompra.nome
       + '%0ACPF: ' + this.ordemDeCompra.cpf
@@ -143,11 +157,9 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
       '_blank'
     );
 
-    $('#purchaseModal').modal('hide');
-    $('#purchaseModalConfirm').modal('show');
     this.ngOnInit();
     this.onShowHideCart();
-
+    $('#purchaseModalConfirm').modal('hide');
   }
 
   ngOnDestroy() {

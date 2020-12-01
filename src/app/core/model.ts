@@ -31,12 +31,14 @@ export enum StatusNumeroRifa {
 }
 
 export class OrdemDeCompra {
+  id: number;
   nome: string;
   cpf: string;
   telefone: string;
   email: string;
   termos: boolean;
   idRifa: number;
-  numeros: NumeroRifa[];
+  numerosObj: NumeroRifa[];
+  idNumeros: number[];
   valorTotal: number;
 }

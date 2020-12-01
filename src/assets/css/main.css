@@ -2860,6 +2860,7 @@ span.is-active:after {
     position: absolute;
     top: 50%;
     left: 55%;
+    max-width: 45%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -2867,47 +2868,49 @@ span.is-active:after {
 
 @media (max-width: 1700px) {
     .hero__car img {
-        max-width: 60%;
+        max-width: 35%;
         left: 65%;
     }
 }
 
 @media (max-width: 1350px) {
     .hero__car img {
-        max-width: 50%;
+        max-width: 35%;
         left: 70%;
     }
 }
 
 @media (max-width: 1199px) {
     .hero__car img {
-        max-width: 40%;
+        max-width: 35%;
         left: 78%;
     }
 }
 
 @media (max-width: 991px) {
     .hero__car img {
+        max-width: 30%;
         left: 65%;
     }
 }
 
 @media (max-width: 767px) {
     .hero__car img {
-        max-width: 30%;
+        max-width: 25%;
         left: 70%;
     }
 }
 
 @media (max-width: 575px) {
     .hero__car img {
+        max-width: 24%;
         left: 80%;
     }
 }
 
 @media (max-width: 480px) {
     .hero__car img {
-        max-width: 25%;
+        max-width: 22%;
         left: 85%;
     }
 }
@@ -6474,7 +6477,13 @@ span.is-active:after {
 }
 
 .contest-cart__thumb-slider .single-slide img {
-    width: 70%;
+  width: 70%;
+}
+
+@media (max-width: 991px) {
+  .contest-cart__thumb-slider .single-slide img {
+      width: 60%;
+  }
 }
 
 .contest-cart__nav-slider {
