@@ -12,12 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { ContatoComponent } from './contato/contato.component';
 import { PoliticaPrivacidadeComponent } from './politica-privacidade/politica-privacidade.component';
 import { TermosCondicoesComponent } from './termos-condicoes/termos-condicoes.component';
+import { AdminManagementComponent } from './admin-management/admin-management.component';
 
 
 
 @NgModule({
   declarations: [IndexPageComponent, RifasPageComponent, RifaDetalheComponent, PagesBaseComponent,
-                ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent],
+                ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent, AdminManagementComponent],
   imports: [
     CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule
   ]

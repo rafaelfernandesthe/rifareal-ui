@@ -4,16 +4,16 @@ export class Rifa {
   codigo: string;
   descricao: string;
   valor: number;
-  diasTotal: number;
-  diasRestantes: number;
   rifasTotal: number;
   rifasRestantes: number;
   dataInclusao: Date;
   dataInicio: Date;
-  dataFim: Date;
-  dataFimStr: string;
+  dataSorteio: Date;
+  dataSorteioStr: string;
   imagem: string;
+  telaPrincipal: boolean;
   numeros: Array<NumeroRifa>;
+  diasRestantes: number;
 }
 
 export class NumeroRifa {

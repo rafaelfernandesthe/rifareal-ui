@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { RifaService } from './../../services/rifa.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { Component, OnInit } from '@angular/core';
@@ -29,11 +30,11 @@ export class IndexPageComponent extends PagesBaseComponent implements OnInit {
         subtitulo_linha1: `${result.descricao} POR`,
         destaque_linha2: `R$ ${result.valor}`,
         texto_linha3: `Esta é sua grande oportunidade de adquirir um ${result.descricao},
-          o sorteio acontecerá no dia ${result.dataFimStr} pela Loteria Federal da Caixa.`,
+          o sorteio acontecerá no dia ${result.dataSorteioStr} pela Loteria Federal da Caixa.`,
         textoBotao: 'Comprar Agora!',
         urlBotao: `rifa-detalhe/${result.codigo}`,
         urlVideo: '',
-        imagem: result.imagem,
+        imagem: `${environment.apiUrl}/site/product-images/${result.imagem}`,
         altImagem: result.descricao,
       };
     });

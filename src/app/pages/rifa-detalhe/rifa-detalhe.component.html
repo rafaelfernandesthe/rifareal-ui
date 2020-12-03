@@ -11,7 +11,7 @@
       <div class="col-lg-6">
         <div class="clock-wrapper">
           <p class="mb-2">Esta Rifa finaliza em:</p>
-          <div class="clock" data-clock="">{{dataFimStr}}</div>
+          <div class="clock" data-clock="">{{dataSorteioStr}}</div>
         </div><!-- clock-wrapper end -->
       </div>
     </div>
@@ -35,7 +35,7 @@
             <div class="contest-num">Rifa: <span>{{rifa.codigo}}</span></div>
             <h4 class="subtitle d-none d-sm-block">Garanta agora a sua chance de ganhar um</h4>
             <h3 class="contest-name">{{ rifa.descricao }}</h3>
-            <p>Sorteio dia {{rifa.dataFim | date : 'dd/MM/yyyy'}}</p>
+            <p>Sorteio dia {{rifa.dataSorteioStr}}</p>
             <div class="ticket-price">
               <span class="amount">R$ {{rifa.valor}}</span>
               <small>Valor Unitário</small>
@@ -101,30 +101,42 @@
                 <p>A cota mínima a para realização do sorteio é de 95% dos bilhetes pagos, caso não seja alcançada, a data do sorteio será alterada para o próximo sorteio da Loteria Federal, até que a cota seja atendida.</p>
 
                 <p>Neste sorteio cada número adquirido/comprado equivale a {{1000/rifa.numeros.length}} números para concorrer.</p>
-                <p>A fómula para os números que irão concorrer é: n, n+200, n+400, n+600, n+800</p>
-                <p>Exemplos: <br>
-                  Caso seja comprado o número 0, este participante concorrerá com os números 0, 200, 400, 600, 800<br>
-                  Caso seja comprado o número 1, este participante concorrerá com os números 1, 201, 401, 601, 801<br>
-                  Caso seja comprado o número 5, este participante concorrerá com os números 5, 205, 405, 605, 805<br>
-                  Caso seja comprado o número 10, este participante concorrerá com os números 10, 210, 410, 610, 810<br>
-                  Caso seja comprado o número 100, este participante concorrerá com os números 100, 300, 500, 700, 900<br>
-                  Caso seja comprado o número 150, este participante concorrerá com os números 150, 350, 550, 750, 950<br>
-                  Caso seja comprado o número 199, este participante concorrerá com os números 199, 399, 599, 799, 999<br>
-                </p>
+                <div *ngIf="rifa.numeros.length === 200">
+                  <p>A fómula para os números que irão concorrer é: n, n+200, n+400, n+600, n+800</p>
+                  <p>Exemplos: <br>
+                    Caso seja comprado o número 0, este participante concorrerá com os números 0, 200, 400, 600, 800<br>
+                    Caso seja comprado o número 1, este participante concorrerá com os números 1, 201, 401, 601, 801<br>
+                    Caso seja comprado o número 5, este participante concorrerá com os números 5, 205, 405, 605, 805<br>
+                    Caso seja comprado o número 10, este participante concorrerá com os números 10, 210, 410, 610, 810<br>
+                    Caso seja comprado o número 100, este participante concorrerá com os números 100, 300, 500, 700, 900<br>
+                    Caso seja comprado o número 150, este participante concorrerá com os números 150, 350, 550, 750, 950<br>
+                    Caso seja comprado o número 199, este participante concorrerá com os números 199, 399, 599, 799, 999<br>
+                  </p>
+                </div>
+                <div *ngIf="rifa.numeros.length === 500">
+                  <p>A fómula para os números que irão concorrer é: n, n+500</p>
+                  <p>Exemplos: <br>
+                    Caso seja comprado o número 0, este participante concorrerá com os números 0 e 500<br>
+                    Caso seja comprado o número 1, este participante concorrerá com os números 1 e 501<br>
+                    Caso seja comprado o número 100, este participante concorrerá com os números 100 e 600<br>
+                    Caso seja comprado o número 250, este participante concorrerá com os números 250, 750<br>
+                    Caso seja comprado o número 499, este participante concorrerá com os números 499, 999<br>
+                  </p>
+                </div>
                 <br>
-                <p>O ganhador do sorteio será definido com base no resultado do 1º prêmio da Loteria Federal de {{rifa.dataFimStr}}.</p>
+                <p>O ganhador do sorteio será definido com base no resultado do 1º prêmio da Loteria Federal de {{rifa.dataSorteioStr}}.</p>
 
                 <p>A Loteria Federal sorteia um número com 6 digitos, exemplo: 046174, a apuração desta rifa ocorre sempre com base nos 3 últimos números, neste caso 174 seria o vencedor</p>
 
-                <p>Caso o número sorteado pela Loteria Federal não coincida com um bilhete pago, o ganhador será definido com base no 2º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+                <p>Caso o número sorteado pela Loteria Federal não coincida com um bilhete pago, o ganhador será definido com base no 2º prêmio da Loteria Federal da {{rifa.dataSorteioStr}}.</p>
 
-                <p>Caso o número sorteado pela Loteria Federal no 2º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 3º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+                <p>Caso o número sorteado pela Loteria Federal no 2º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 3º prêmio da Loteria Federal da {{rifa.dataSorteioStr}}.</p>
 
-                <p>Caso o número sorteado pela Loteria Federal no 3º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 4º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+                <p>Caso o número sorteado pela Loteria Federal no 3º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 4º prêmio da Loteria Federal da {{rifa.dataSorteioStr}}.</p>
 
-                <p>Caso o número sorteado pela Loteria Federal no 4º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 5º prêmio da Loteria Federal da {{rifa.dataFimStr}}.</p>
+                <p>Caso o número sorteado pela Loteria Federal no 4º prêmio não coincida com um bilhete pago, o ganhador será definido com base no 5º prêmio da Loteria Federal da {{rifa.dataSorteioStr}}.</p>
 
-                <p>Persistindo sem ganhador, o contemplado será o número mais próximo do 1º prêmio da Loteria Federal de {{rifa.dataFimStr}}, em caso de números igualmente próximos o vencedor será o número maior.</p>
+                <p>Persistindo sem ganhador, o contemplado será o número mais próximo do 1º prêmio da Loteria Federal de {{rifa.dataSorteioStr}}, em caso de números igualmente próximos o vencedor será o número maior.</p>
                 <p>Exemplo: <br>
                   Número sorteado: 150, porém este número não foi comprado.<br>
                   Se foram comprados os números 149 e o número 151, o vencedor será o número 151, pois é o maior.

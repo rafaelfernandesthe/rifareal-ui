@@ -1,3 +1,4 @@
+import { AdminManagementComponent } from './pages/admin-management/admin-management.component';
 import { PoliticaPrivacidadeComponent } from './pages/politica-privacidade/politica-privacidade.component';
 import { TermosCondicoesComponent } from './pages/termos-condicoes/termos-condicoes.component';
 import { ContatoComponent } from './pages/contato/contato.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'contato', component: ContatoComponent },
   { path: 'termos-condicoes', component: TermosCondicoesComponent },
   { path: 'politicas-privacidade', component: PoliticaPrivacidadeComponent },
+  { path: 'admin-management', component: AdminManagementComponent },
 ];
 
 @NgModule({

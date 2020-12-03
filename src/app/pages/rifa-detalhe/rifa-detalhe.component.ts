@@ -1,10 +1,10 @@
+import { environment } from './../../../environments/environment';
 import { OrdemDeCompraService } from './../../services/ordem-de-compra.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
 import { RifaService } from './../../services/rifa.service';
-import { NumeroRifa, Rifa, StatusNumeroRifa, OrdemDeCompra } from './../../core/model';
+import { NumeroRifa, Rifa, OrdemDeCompra } from './../../core/model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormControl } from '@angular/forms';
 
 declare var $: any;
 
@@ -22,7 +22,7 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   public numerosSelecionados: any = new Array();
   public percentual: string;
   public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
-  public dataFimStr: string;
+  public dataSorteioStr: string;
 
   constructor(private route: ActivatedRoute, private rifaService: RifaService, private ordemDeCompraService: OrdemDeCompraService) {
     super();
@@ -38,10 +38,10 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
 
       this.rifaService.loadByCodigo(this.codigo).then( result => {
         this.rifa = result;
-
-        this.rifa.dataFim = new Date(this.rifa.dataFim);
-        this.dataFimStr = `${this.rifa.dataFim.getFullYear()}/${this.rifa.dataFim.getMonth() + 1}/${this.rifa.dataFim.getDate()}`;
-        $('.clock').countdown(this.dataFimStr, function(event) {
+        this.rifa.imagem = `${environment.apiUrl}/site/product-images/${this.rifa.imagem}`;
+        this.rifa.dataSorteio = new Date(this.rifa.dataSorteio);
+        this.dataSorteioStr = `${this.rifa.dataSorteio.getFullYear()}/${this.rifa.dataSorteio.getMonth() + 1}/${this.rifa.dataSorteio.getDate()}`;
+        $('.clock').countdown(this.dataSorteioStr, function(event) {
           $(this).html(event.strftime(''
             + '<div><span>%D</span><p>Dias</p></div>'
             + '<div><span>%H</span><p>Horas</p></div>'

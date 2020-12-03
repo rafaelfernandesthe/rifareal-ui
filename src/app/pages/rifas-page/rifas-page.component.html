@@ -24,7 +24,6 @@
                         <div class="contest-card__thumb">
                           <img src="{{ item.imagem }}" alt="image">
                           <a href="javascript:void()" class="{{ item.status == 'ABERTA' ? 'action-icon-available' : 'action-icon-closed' }}">
-                            <!-- <div>{{ item.status }}</div> -->
                           </a>
                           <div class="contest-num">
                             <span>Rifa Número:</span>
@@ -44,7 +43,7 @@
                           <ul class="contest-card__meta">
                             <li>
                               <i class="las la-clock"></i>
-                              <span>{{ item.diasTotal }} dias</span>
+                              <span>{{ item.diasRestantes }} dias</span>
                             </li>
                             <li>
                               <i class="las la-ticket-alt"></i>

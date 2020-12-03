@@ -1,0 +1,69 @@
+<app-breadcrumb
+  [caminhos]=""
+  [destino]="'<<ADMIN>>'">
+</app-breadcrumb>
+
+<!-- contest section start  -->
+<section class="pb-120 mt-minus-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="contest-wrapper">
+
+          <div class="contest-wrapper__body">
+
+            <div class="tab-content mt-50" id="myTabContent">
+              <div class="tab-pane fade show active" id="dream" role="tabpanel" aria-labelledby="dream-tab">
+
+                <div class="row mb-none-30 mt-50 bg-white">
+
+                  <form #rifaForm="ngForm">
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="code">Codigo*</label>
+                        <input type="text" class="form-control" autocomplete="off" id="code" name="code" placeholder="Codigo" required [(ngModel)]="rifa.codigo">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="desc">Descrição*</label>
+                        <input type="text" class="form-control" autocomplete="off" id="desc" name="desc" placeholder="Descrição" required [(ngModel)]="rifa.descricao">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="value">Valor do Número (R$)*</label>
+                        <input type="number" class="form-control" autocomplete="off" id="value" name="value" placeholder="Valor" required [(ngModel)]="rifa.valor">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="dtF">Data do Sorteio*</label>
+                        <input type="date" class="form-control" autocomplete="off" id="dtF" name="dtF" placeholder="Data Sorteio" required [(ngModel)]="rifa.dataSorteio">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="img">Imagem*</label>
+                        <input type="file" class="form-control" id="pImg" name="pImg" required (change)="onFileChanged($event)">
+                        <!-- <input type="file" class="form-control" autocomplete="off" id="pImg" name="pImg" placeholder="Imagem" required [(ngModel)]="rifa.imagem"> -->
+                      </div>
+                      <div class="form-check col-6">
+                        <label for="name">Quantidade de Números*</label>
+                        <input type="radio" class="" name="qtdNumeros" [(ngModel)]="rifa.rifasTotal" value="200">200
+                        <input type="radio" class="" name="qtdNumeros" [(ngModel)]="rifa.rifasTotal" value="500">500
+                        <input type="radio" class="" name="qtdNumeros" [(ngModel)]="rifa.rifasTotal" value="1000">1000
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button type="button" class="btn cmn-btn-pay style--three" [disabled]="!rifaForm.valid" (click)="onSubmitRifa()">Salvar</button>
+                    </div>
+                  </form>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- contest-wrapper end -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contest section end -->

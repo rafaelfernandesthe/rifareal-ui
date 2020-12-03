@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { RodapeComponent } from './../../@template/rodape/rodape.component';
 import { RifaService } from './../../services/rifa.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
@@ -23,6 +24,10 @@ export class RifasPageComponent extends PagesBaseComponent implements OnInit {
 
     this.rifaService.listarTodas().then(result => {
       this.todasRifas = result;
+      this.todasRifas = this.todasRifas.map(r => {
+        r.imagem = `${environment.apiUrl}/site/product-images/${r.imagem}`;
+        return r;
+      });
     });
 
   }
