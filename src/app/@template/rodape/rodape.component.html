@@ -28,8 +28,6 @@
       </div>
       <div class="col-lg-8">
         <ul class="short-links justify-content-lg-end justify-content-center">
-          <!-- <li><a href="#0">FAQ</a></li> -->
-          <li><a routerLink="/contato">Contato</a></li>
           <li><a routerLink="/politicas-privacidade">Políticas de Privacidade</a></li>
           <li><a routerLink="/termos-condicoes">Termos e Condições</a></li>
         </ul>
@@ -38,7 +36,7 @@
     <hr>
     <div class="row py-5 align-items-center">
       <div class="col-lg-6">
-        <p class="copy-right-text text-lg-left text-center mb-lg-0 mb-3">Copyright © 2020. Todos os direitos reservados para <a class="copy-right-text" routerLink="/">Rifa Real</a></p>
+        <p class="copy-right-text text-lg-left text-center mb-lg-0 mb-3">Copyright © {{getNow() | date:'yyyy'}}. Todos os direitos reservados para <a class="copy-right-text" routerLink="/">Rifa Real</a></p>
       </div>
       <div class="col-lg-6">
         <ul class="social-links justify-content-lg-end justify-content-center">

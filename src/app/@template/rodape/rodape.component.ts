@@ -20,4 +20,8 @@ export class RodapeComponent implements OnInit {
 
   }
 
+  getNow() {
+    return new Date();
+  }
+
 }

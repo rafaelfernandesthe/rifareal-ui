@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class IndexPageComponent extends PagesBaseComponent implements OnInit {
 
-  sorteioPrincipal: any = {};
+  sorteioPrincipal: any = {imagem: ''};
 
   constructor(private rifaService: RifaService) {
     super();
