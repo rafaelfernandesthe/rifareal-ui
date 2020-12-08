@@ -16,7 +16,6 @@ export class RodapeComponent implements OnInit {
 
     alert('Concluído, vamos te avisar quando tiver novidade ;)');
 
-    document.location.reload();
 
   }
 

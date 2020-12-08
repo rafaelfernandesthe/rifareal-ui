@@ -1,3 +1,4 @@
+import { NumeroRifaService } from './../../services/numero-rifa.service';
 import { environment } from './../../../environments/environment';
 import { OrdemDeCompraService } from './../../services/ordem-de-compra.service';
 import { PagesBaseComponent } from './../pages-base/pages-base.component';
@@ -23,8 +24,10 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   public percentual: string;
   public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
   public dataSorteioStr: string;
+  public numeroSelecionadoMostrar = new NumeroRifa();
 
-  constructor(private route: ActivatedRoute, private rifaService: RifaService, private ordemDeCompraService: OrdemDeCompraService) {
+  constructor(private route: ActivatedRoute, private rifaService: RifaService,
+              private ordemDeCompraService: OrdemDeCompraService, private numeroRifaService: NumeroRifaService) {
     super();
   }
 
@@ -80,9 +83,18 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
     return '';
   }
 
+  getNomeStatusView( statusNumber: number ) {
+    switch (statusNumber) {
+      case 1: return 'DISPONÍVEL';
+      case 2: return 'RESERVADO';
+      case 3: return 'PAGO';
+    }
+    return '';
+  }
+
   onAdd(event, numero: NumeroRifa) {
     if (numero.statusNum !== 1) {
-      this.ngOnInit();
+      this.onShowComprador(numero);
       return;
     }
 
@@ -99,6 +111,13 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
     });
 
     this.onShowHideCart();
+  }
+
+  onShowComprador(numero: NumeroRifa) {
+    this.numeroRifaService.loadById(numero.id).then( result => {
+      this.numeroSelecionadoMostrar = result;
+      $('#ownerModalConfirm').modal('show');
+    });
   }
 
   onShowHideCart() {

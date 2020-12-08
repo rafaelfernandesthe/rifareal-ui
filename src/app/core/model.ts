@@ -22,6 +22,9 @@ export class NumeroRifa {
   valor: number;
   status: string;
   statusNum: number;
+  nomeComprador: string;
+  cpfComprador: string;
+  telefoneComprador: string;
 }
 
 export enum StatusNumeroRifa {

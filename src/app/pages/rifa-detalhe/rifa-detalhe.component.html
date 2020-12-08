@@ -78,7 +78,9 @@
                       </div>
                       <ul class="lottery-single__number">
                         <ng-template ngFor let-numero [ngForOf]="todosNumeros" let-i="index">
-                          <li class="{{getClassByStatus(numero.statusNum)}}" (click)="onAdd($event, numero)">{{getValorStr(numero.valor)}}</li>
+                          <li class="{{getClassByStatus(numero.statusNum)}}" (click)="onAdd($event, numero)">
+                              {{getValorStr(numero.valor)}}
+                          </li>
                         </ng-template>
                       </ul>
                     </div><!-- lottery-single__body end -->
@@ -100,8 +102,8 @@
                 <br>
                 <p>A cota mínima a para realização do sorteio é de 95% dos bilhetes pagos, caso não seja alcançada, a data do sorteio será alterada para o próximo sorteio da Loteria Federal, até que a cota seja atendida.</p>
 
-                <p>Neste sorteio cada número adquirido/comprado equivale a {{1000/rifa.numeros.length}} números para concorrer.</p>
-                <div *ngIf="rifa.numeros.length === 200">
+                <p>Neste sorteio cada número adquirido/comprado equivale a {{rifa.numeros ? 1000/rifa.numeros.length : 0}} números para concorrer.</p>
+                <div *ngIf="rifa.numeros && rifa.numeros.length === 200">
                   <p>A fómula para os números que irão concorrer é: n, n+200, n+400, n+600, n+800</p>
                   <p>Exemplos: <br>
                     Caso seja comprado o número 0, este participante concorrerá com os números 0, 200, 400, 600, 800<br>
@@ -113,7 +115,7 @@
                     Caso seja comprado o número 199, este participante concorrerá com os números 199, 399, 599, 799, 999<br>
                   </p>
                 </div>
-                <div *ngIf="rifa.numeros.length === 500">
+                <div *ngIf="rifa.numeros && rifa.numeros.length === 500">
                   <p>A fómula para os números que irão concorrer é: n, n+500</p>
                   <p>Exemplos: <br>
                     Caso seja comprado o número 0, este participante concorrerá com os números 0 e 500<br>
@@ -242,6 +244,29 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="onWhatsAppAction()">Confirmar no WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Show Owner -->
+<div class="modal fade" id="ownerModalConfirm" tabindex="-1" role="dialog" aria-labelledby="ownerModalConfirmTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-modal-default">
+      <div class="modal-header">
+        <h5 class="modal-title label" id="ownerModalConfirmTitle">Detalhes do número <b>{{ numeroSelecionadoMostrar.valor}}</b></h5>
+      </div>
+      <div class="modal-body">
+        <div class="info-title">
+          <label>Número: <b>{{ numeroSelecionadoMostrar.valor}}</b></label><br>
+          <label>Status: <b>{{getNomeStatusView(numeroSelecionadoMostrar.statusNum)}}</b></label><br>
+          <label>Nome: <b>{{numeroSelecionadoMostrar.nomeComprador}}</b></label><br>
+          <label>CPF: <b>{{numeroSelecionadoMostrar.cpfComprador}}</b></label><br>
+          <label>Telefone: <b>{{numeroSelecionadoMostrar.telefoneComprador}}</b></label><br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
