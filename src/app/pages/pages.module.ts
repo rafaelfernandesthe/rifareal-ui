@@ -1,3 +1,4 @@
+import { NewRifaPageComponent } from './admin-management/new-rifa-page/new-rifa-page.component';
 import { ServicesModule } from './../services/services.module';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './../core/core.module';
@@ -13,13 +14,14 @@ import { FormsModule } from '@angular/forms';
 import { ContatoComponent } from './contato/contato.component';
 import { PoliticaPrivacidadeComponent } from './politica-privacidade/politica-privacidade.component';
 import { TermosCondicoesComponent } from './termos-condicoes/termos-condicoes.component';
-import { AdminManagementComponent } from './admin-management/admin-management.component';
+import { ConfirmPurchasePageComponent } from './admin-management/confirm-purchase-page/confirm-purchase-page.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [IndexPageComponent, RifasPageComponent, RifaDetalheComponent, PagesBaseComponent,
-                ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent, AdminManagementComponent],
+                ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent, NewRifaPageComponent,
+                ConfirmPurchasePageComponent],
   imports: [
     CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule, NgxMaskModule.forRoot(),
   ]

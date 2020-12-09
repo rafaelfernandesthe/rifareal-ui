@@ -1,14 +1,14 @@
-import { PagesBaseComponent } from './../pages-base/pages-base.component';
-import { RifaService } from './../../services/rifa.service';
-import { Rifa } from './../../core/model';
+import { PagesBaseComponent } from '../../pages-base/pages-base.component';
+import { RifaService } from '../../../services/rifa.service';
+import { Rifa } from '../../../core/model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-admin-management',
-  templateUrl: './admin-management.component.html',
-  styleUrls: ['./admin-management.component.scss']
+  selector: 'app-new-rifa-page',
+  templateUrl: './new-rifa-page.component.html',
+  styleUrls: ['./new-rifa-page.component.scss']
 })
-export class AdminManagementComponent extends PagesBaseComponent implements OnInit {
+export class NewRifaPageComponent extends PagesBaseComponent implements OnInit {
 
   public rifa: Rifa = new Rifa();
   public selectedFile: any;

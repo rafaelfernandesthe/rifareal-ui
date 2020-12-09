@@ -1,6 +1,6 @@
 <app-breadcrumb
   [caminhos]=""
-  [destino]="'<<ADMIN>>'">
+  [destino]="'<<ADMIN>> -> Nova Rifa'">
 </app-breadcrumb>
 
 <!-- contest section start  -->
@@ -50,7 +50,7 @@
                         <input type="radio" class="" name="qtdNumeros" [(ngModel)]="rifa.rifasTotal" value="1000">1000
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-md-center">
                       <button type="button" class="btn cmn-btn-pay style--three" [disabled]="!rifaForm.valid" (click)="onSubmitRifa()">Salvar</button>
                     </div>
                   </form>

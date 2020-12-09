@@ -1,0 +1,14 @@
+form {
+  label {
+    color: black !important;
+    font-size: 12px !important;
+  }
+}
+
+.form-control:disabled, .form-control[readonly] {
+  color: black;
+}
+
+select option {
+  background-color: lightgray;
+}
