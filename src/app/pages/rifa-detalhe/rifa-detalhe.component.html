@@ -200,22 +200,24 @@
           <p>Por favor, preencha os dados abaixo para concluir.</p>
         </div>
         <form #ordemDeCompraForm="ngForm">
-          <div class="form-group">
-            <label for="name">Nome Completo*</label>
-            <input type="text" class="form-control" autocomplete="off" id="name" name="name" placeholder="Nome Completo" required [(ngModel)]="ordemDeCompra.nome">
-          </div>
-          <div class="form-group">
-            <label for="cpf">CPF*</label>
-            <input type="text" class="form-control" autocomplete="off" id="cpf" name="cpf" placeholder="CPF" required [(ngModel)]="ordemDeCompra.cpf">
-          </div>
-          <div class="form-group">
-            <label for="phone">Telefone*</label>
-            <input type="text" class="form-control" autocomplete="off" id="phone" name="phone" placeholder="Telefone" aria-describedby="phoneInfo" required [(ngModel)]="ordemDeCompra.telefone">
-            <small id="phoneInfo" class="form-text text-muted">*Caso seja o vencedor, iremos entrar em contato neste telefone.</small>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="terms" name="terms" required [(ngModel)]="ordemDeCompra.termos">
-            <small class="form-check-label" for="terms">* Declaro que li e concordo com os <a href="javascript:void();">Termos de Uso do site</a>.</small>
+          <div class="container purchase-form">
+            <div class="form-group">
+              <label for="name">Nome Completo*</label>
+              <input type="text" class="form-control" autocomplete="off" id="name" name="name" placeholder="Nome Completo" required [(ngModel)]="ordemDeCompra.nome">
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF*</label>
+              <input type="text" mask="000.000.000-00" class="form-control" autocomplete="off" id="cpf" name="cpf" placeholder="CPF" required [(ngModel)]="ordemDeCompra.cpf">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone*</label>
+              <input type="text" mask="(00) 0 0000-0000" class="form-control" autocomplete="off" id="phone" name="phone" placeholder="Telefone" aria-describedby="phoneInfo" required [(ngModel)]="ordemDeCompra.telefone">
+              <small id="phoneInfo" class="form-text text-muted">*Caso seja o vencedor, iremos entrar em contato neste telefone.</small>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="terms" name="terms" required [(ngModel)]="ordemDeCompra.termos">
+              <small class="form-check-label" for="terms">* Declaro que li e concordo com os <a href="javascript:void();">Termos de Uso do site</a>.</small>
+            </div>
           </div>
         </form>
       </div>

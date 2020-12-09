@@ -6,6 +6,7 @@ import { RifasPageComponent } from './rifas-page/rifas-page.component';
 import { IndexPageComponent } from './index-page/index-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { RifaDetalheComponent } from './rifa-detalhe/rifa-detalhe.component';
 import { PagesBaseComponent } from './pages-base/pages-base.component';
 import { FormsModule } from '@angular/forms';
@@ -14,13 +15,13 @@ import { PoliticaPrivacidadeComponent } from './politica-privacidade/politica-pr
 import { TermosCondicoesComponent } from './termos-condicoes/termos-condicoes.component';
 import { AdminManagementComponent } from './admin-management/admin-management.component';
 
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [IndexPageComponent, RifasPageComponent, RifaDetalheComponent, PagesBaseComponent,
                 ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent, AdminManagementComponent],
   imports: [
-    CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule
+    CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule, NgxMaskModule.forRoot(),
   ]
 })
 export class PagesModule { }
