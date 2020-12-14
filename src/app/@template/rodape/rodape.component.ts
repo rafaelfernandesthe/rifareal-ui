@@ -1,3 +1,4 @@
+import { AssinarNoticiasService } from './../../services/assinar-noticias.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RodapeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private assinarNoticiasService: AssinarNoticiasService) { }
 
   ngOnInit() {
   }
 
-  onNoticias() {
+  onNoticias(emailField) {
 
+    if(!emailField.value){
+      return;
+    }
+
+    if(emailField.validationMessage) {
+      return;
+    }
+
+    this.assinarNoticiasService.save(emailField.value).then(r => {
+      console.log(emailField.value + " salvo com sucesso");
+    });
+
+    emailField.value = '';
     alert('Concluído, vamos te avisar quando tiver novidade ;)');
 
 

@@ -52,7 +52,12 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
             + '<div><span>%S</span><p>Segundos</p></div>'));
         });
 
-        this.percentual = (100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal)) + '%';
+        const percentTmp = 100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal);
+        if((''+percentTmp).indexOf('.') === -1) {
+          this.percentual = percentTmp + '%';
+        } else {
+          this.percentual = percentTmp.toFixed(1) + '%';
+        }
 
         this.todosNumeros = this.todosNumeros.concat(this.rifa.numeros);
 

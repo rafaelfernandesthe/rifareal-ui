@@ -15,13 +15,14 @@ import { ContatoComponent } from './contato/contato.component';
 import { PoliticaPrivacidadeComponent } from './politica-privacidade/politica-privacidade.component';
 import { TermosCondicoesComponent } from './termos-condicoes/termos-condicoes.component';
 import { ConfirmPurchasePageComponent } from './admin-management/confirm-purchase-page/confirm-purchase-page.component';
+import { RegrasSorteioComponent } from './regras-sorteio/regras-sorteio.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [IndexPageComponent, RifasPageComponent, RifaDetalheComponent, PagesBaseComponent,
                 ContatoComponent, PoliticaPrivacidadeComponent, TermosCondicoesComponent, NewRifaPageComponent,
-                ConfirmPurchasePageComponent],
+                ConfirmPurchasePageComponent, RegrasSorteioComponent],
   imports: [
     CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule, NgxMaskModule.forRoot(),
   ]

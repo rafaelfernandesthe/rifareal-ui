@@ -1,3 +1,4 @@
+import { AssinarNoticiasService } from './assinar-noticias.service';
 import { OrdemDeCompraService } from './ordem-de-compra.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RifaService } from './rifa.service';
@@ -12,6 +13,6 @@ import { NumeroRifaService } from './numero-rifa.service';
   imports: [
     CommonModule, HttpClientModule
   ],
-  providers: [RifaService, OrdemDeCompraService, NumeroRifaService]
+  providers: [RifaService, OrdemDeCompraService, NumeroRifaService, AssinarNoticiasService]
 })
 export class ServicesModule { }
