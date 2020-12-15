@@ -26,11 +26,12 @@ export class IndexPageComponent extends PagesBaseComponent implements OnInit {
     });
 
     this.rifaService.loadByMainPage().then(result => {
+
       this.sorteioPrincipal = {
         subtitulo_linha1: `${result.descricao} POR`,
         destaque_linha2: `R$ ${result.valor}`,
-        texto_linha3: `Esta é sua grande oportunidade de adquirir um ${result.descricao},
-          o sorteio acontecerá no dia ${result.dataSorteioStr} pela Loteria Federal da Caixa.`,
+        texto_linha3: `Esta é sua grande oportunidade de adquirir um ${result.descricao} ou R$ ${(result.premioEmDinheiro/1000).toFixed(3)},00 em dinheiro.
+        O sorteio acontecerá no dia ${result.dataSorteioStr} pela Loteria Federal da Caixa.`,
         textoBotao: 'Comprar Agora!',
         urlBotao: `rifa-detalhe/${result.codigo}`,
         urlVideo: '',

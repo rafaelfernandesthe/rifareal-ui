@@ -7,6 +7,11 @@
 <section class="pb-120 mt-minus-100">
   <div class="container">
     <div class="row">
+      <div class="col-12">
+        <p>|<a routerLink="/admin99/new">Novo</a>|<a routerLink="/admin99/confirmar">Confirmar</a>|</p>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-12">
         <div class="contest-wrapper">
 
@@ -19,13 +24,17 @@
 
                   <form #rifaForm="ngForm">
                     <div class="row">
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="code">Codigo*</label>
                         <input type="text" class="form-control" autocomplete="off" id="code" name="code" placeholder="Codigo" required [(ngModel)]="rifa.codigo">
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="desc">Descrição*</label>
                         <input type="text" class="form-control" autocomplete="off" id="desc" name="desc" placeholder="Descrição" required [(ngModel)]="rifa.descricao">
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="desc">Premio em Dinheiro*</label>
+                        <input type="number" class="form-control" autocomplete="off" id="premDin" name="premDin" placeholder="Premio em Dinheiro" required [(ngModel)]="rifa.premioEmDinheiro">
                       </div>
                     </div>
                     <div class="row">

@@ -5,8 +5,8 @@ import { CoreModule } from './../core/core.module';
 import { SectionsModule } from './../sections/sections.module';
 import { RifasPageComponent } from './rifas-page/rifas-page.component';
 import { IndexPageComponent } from './index-page/index-page.component';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { RifaDetalheComponent } from './rifa-detalhe/rifa-detalhe.component';
 import { PagesBaseComponent } from './pages-base/pages-base.component';
@@ -25,6 +25,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
                 ConfirmPurchasePageComponent, RegrasSorteioComponent],
   imports: [
     CommonModule, RouterModule, SectionsModule, CoreModule, FormsModule, ServicesModule, NgxMaskModule.forRoot(),
-  ]
+  ],
 })
 export class PagesModule { }

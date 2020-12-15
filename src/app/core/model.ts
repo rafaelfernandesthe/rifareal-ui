@@ -14,6 +14,7 @@ export class Rifa {
   telaPrincipal: boolean;
   numeros: Array<NumeroRifa>;
   diasRestantes: number;
+  premioEmDinheiro: number;
 }
 
 export class NumeroRifa {
