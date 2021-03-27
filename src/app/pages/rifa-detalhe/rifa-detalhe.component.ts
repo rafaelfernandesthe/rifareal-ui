@@ -25,6 +25,9 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
   public ordemDeCompra: OrdemDeCompra = new OrdemDeCompra();
   public dataSorteioStr: string;
   public numeroSelecionadoMostrar = new NumeroRifa();
+  public qtdDisponivel = 0;
+  public qtdReservado = 0;
+  public qtdPago = 0;
 
   constructor(private route: ActivatedRoute, private rifaService: RifaService,
               private ordemDeCompraService: OrdemDeCompraService, private numeroRifaService: NumeroRifaService) {
@@ -62,6 +65,10 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
         this.rifa.numeros = this.rifa.numeros.sort((n1, n2) => n1.valor - n2.valor);
 
         this.todosNumeros = this.todosNumeros.concat(this.rifa.numeros);
+
+        this.qtdDisponivel = this.todosNumeros.filter(n => n.status = 0);
+        this.qtdReservado = this.todosNumeros.filter(n => n.status = 1);
+        this.qtdPago = this.todosNumeros.filter(n => n.status = 2);
 
       });
 
