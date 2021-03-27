@@ -53,11 +53,13 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
         });
 
         const percentTmp = 100 - (this.rifa.rifasRestantes * 100 / this.rifa.rifasTotal);
-        if((''+percentTmp).indexOf('.') === -1) {
+        if (('' + percentTmp).indexOf('.') === -1) {
           this.percentual = percentTmp + '%';
         } else {
           this.percentual = percentTmp.toFixed(1) + '%';
         }
+
+        this.rifa.numeros = this.rifa.numeros.sort((n1, n2) => n1.valor - n2.valor);
 
         this.todosNumeros = this.todosNumeros.concat(this.rifa.numeros);
 
