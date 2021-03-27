@@ -66,9 +66,9 @@ export class RifaDetalheComponent extends PagesBaseComponent implements OnInit, 
 
         this.todosNumeros = this.todosNumeros.concat(this.rifa.numeros);
 
-        this.qtdDisponivel = this.todosNumeros.filter(n => n.status = 0);
-        this.qtdReservado = this.todosNumeros.filter(n => n.status = 1);
-        this.qtdPago = this.todosNumeros.filter(n => n.status = 2);
+        this.qtdDisponivel = this.todosNumeros.filter(n => n.status = 0).length;
+        this.qtdReservado = this.todosNumeros.filter(n => n.status = 1).length;
+        this.qtdPago = this.todosNumeros.filter(n => n.status = 2).length;
 
       });
 
